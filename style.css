@@ -1,0 +1,437 @@
+/* style.css */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+
+  height:100vh;
+  overflow:hidden;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  position:relative;
+
+  font-family:
+    "Hiragino Mincho ProN",
+    serif;
+
+  background:
+    radial-gradient(circle at top,
+      #fff8fa 0%,
+      #f7e6ea 45%,
+      #ead7d7 100%);
+}
+
+/* 和柄背景 */
+
+.bg-pattern{
+
+  position:absolute;
+  inset:0;
+
+  opacity:.07;
+
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      #b43c5a 0px,
+      #b43c5a 2px,
+      transparent 2px,
+      transparent 24px
+    );
+}
+
+/* 視点 */
+
+.container{
+  perspective:2400px;
+}
+
+/* 本体 */
+
+.omikuji{
+
+  width:260px;
+  height:360px;
+
+  position:relative;
+
+  transform-style:preserve-3d;
+}
+
+/* 紙の間の影 */
+
+.omikuji::after{
+
+  content:"";
+
+  position:absolute;
+
+  top:0;
+  left:0;
+
+  width:40px;
+  height:100%;
+
+  border-radius:18px 0 0 18px;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0,0,0,.11),
+      rgba(0,0,0,0)
+    );
+
+  opacity:0;
+
+  pointer-events:none;
+
+  z-index:5;
+}
+
+/* 開いたら影 */
+
+.open.omikuji::after{
+
+  animation:
+    insideShadow 0.47s linear forwards;
+}
+
+/* 90度くらいで影 */
+
+@keyframes insideShadow{
+
+  0%{
+    opacity:0;
+  }
+
+  49%{
+    opacity:0;
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:1;
+  }
+}
+
+/* 共通 */
+
+.inside,
+.cover{
+
+  position:absolute;
+  inset:0;
+
+  border-radius:18px;
+
+  overflow:hidden;
+}
+
+/* 和紙感 */
+
+.inside::before,
+.cover::before{
+
+  content:"";
+
+  position:absolute;
+  inset:0;
+
+  opacity:.08;
+
+  background-image:
+    radial-gradient(#000 .7px, transparent .7px);
+
+  background-size:10px 10px;
+
+  pointer-events:none;
+}
+
+/* 中身 */
+
+.inside{
+
+  background:
+    linear-gradient(
+      to bottom,
+      #fffdf6,
+      #f5eedb
+    );
+
+  padding:28px;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.18);
+
+  z-index:1;
+}
+
+/* タイトル */
+
+.inside h1{
+
+  text-align:center;
+
+  color:#b91d3b;
+
+  font-size:34px;
+
+  letter-spacing:8px;
+
+  margin-bottom:24px;
+}
+
+/* 結果エリア */
+
+.result-area{
+
+  position:relative;
+
+  height:250px;
+}
+
+/* 運勢 */
+
+.rank{
+
+  position:absolute;
+
+  left:-18px;
+  bottom:10px;
+
+  writing-mode:vertical-rl;
+  text-orientation:upright;
+
+  font-size:42px;
+
+  color:#b91d3b;
+
+  font-weight:bold;
+
+  letter-spacing:8px;
+}
+
+/* 内容 */
+
+.text{
+
+  position:absolute;
+
+  right:0;
+  top:0;
+
+  writing-mode:vertical-rl;
+
+  font-size:24px;
+
+  line-height:2.2;
+
+  color:#3d2a2a;
+}
+
+/* 表紙 */
+
+.cover{
+
+  background:
+    linear-gradient(
+      to bottom,
+      #fffef7,
+      #f7efdc
+    );
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+
+  box-shadow:
+    0 25px 60px rgba(0,0,0,.22);
+
+  z-index:10;
+
+  cursor:pointer;
+
+  transform-origin:left center;
+
+  transform-style:preserve-3d;
+
+  will-change:transform;
+
+  transition:
+    transform 1.8s cubic-bezier(.22,1,.36,1);
+}
+
+/* 開く */
+
+.open .cover{
+
+  transform:
+    rotateY(-180deg);
+}
+
+/* 表紙文字 */
+
+.seal,
+.cover-text{
+
+  transition:
+    opacity 0s linear;
+}
+
+/* 半分くらいで文字消す */
+
+.open .seal,
+.open .cover-text{
+
+  opacity:0;
+
+  transition-delay:.232s;
+
+  pointer-events:none;
+}
+
+/* 封 */
+
+.seal{
+
+  width:72px;
+  height:72px;
+
+  border-radius:50%;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:
+    radial-gradient(circle at top,
+      #d73c5d,
+      #a31535);
+
+  color:white;
+
+  font-size:34px;
+  font-weight:bold;
+
+  margin-bottom:24px;
+
+  box-shadow:
+    0 12px 24px rgba(185,29,59,.4);
+}
+
+/* 表文字 */
+
+.cover-text{
+  text-align:center;
+}
+
+.cover-text p{
+
+  font-size:34px;
+
+  color:#5c2c2c;
+
+  letter-spacing:5px;
+}
+
+.cover-text span{
+
+  display:block;
+
+  margin-top:16px;
+
+  font-size:14px;
+
+  color:#8b6b6b;
+}
+
+/* メッセージ */
+
+.message{
+
+  position:fixed;
+
+  bottom:40px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  color:#7a5555;
+
+  font-size:14px;
+
+  letter-spacing:1px;
+}
+
+/* キラキラ */
+
+.sparkle{
+
+  position:absolute;
+
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:white;
+
+  pointer-events:none;
+
+  animation:
+    sparkle 1.8s linear forwards;
+}
+
+@keyframes sparkle{
+
+  0%{
+
+    transform:
+      scale(0)
+      translateY(0);
+
+    opacity:1;
+  }
+
+  100%{
+
+    transform:
+      scale(2.5)
+      translateY(-120px);
+
+    opacity:0;
+  }
+}
+
+/* スマホ最適化 */
+
+@media(max-width:480px){
+
+  .omikuji{
+    width:240px;
+    height:340px;
+  }
+
+  .inside h1{
+    font-size:30px;
+  }
+
+  .rank{
+    font-size:38px;
+  }
+
+  .text{
+    font-size:21px;
+  }
+}
