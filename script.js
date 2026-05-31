@@ -17,7 +17,7 @@ const message =
 if(sessionStorage.getItem("loveOmikujiPlayed")){
 
   message.innerText =
-    "このタブではもう引いています";
+    "既に引いています";
 
   omikuji.style.pointerEvents = "none";
   omikuji.style.opacity = ".75";
