@@ -59,8 +59,8 @@ body{
 
 .omikuji{
 
-  width:260px;
-  height:360px;
+  width:280px;
+  height:400px;
 
   position:relative;
 
@@ -97,15 +97,11 @@ body{
   z-index:5;
 }
 
-/* 開いたら影 */
-
 .open.omikuji::after{
 
   animation:
-    insideShadow 0.47s linear forwards;
+    insideShadow .47s linear forwards;
 }
-
-/* 90度くらいで影 */
 
 @keyframes insideShadow{
 
@@ -170,7 +166,7 @@ body{
       #f5eedb
     );
 
-  padding:28px;
+  padding:24px;
 
   box-shadow:
     0 25px 60px rgba(0,0,0,.18);
@@ -186,59 +182,88 @@ body{
 
   color:#b91d3b;
 
-  font-size:34px;
+  font-size:32px;
 
-  letter-spacing:8px;
+  letter-spacing:4px;
 
-  margin-bottom:24px;
+  margin-bottom:18px;
 }
 
 /* 結果エリア */
 
 .result-area{
 
-  position:relative;
+  display:flex;
+  flex-direction:column;
 
-  height:250px;
+  gap:10px;
+
+  height:240px;
+}
+
+/* 各項目 */
+
+.section{
+
+  flex:1;
+
+  display:flex;
+  flex-direction:column;
+
+  padding-bottom:9px;
+
+  border-bottom:
+    1px solid rgba(0,0,0,.08);
+}
+
+.section:last-child{
+
+  border-bottom:none;
+}
+
+/* 見出し */
+
+.label{
+
+  font-size:14px;
+
+  color:#a34b60;
+
+  font-weight:bold;
+
+  letter-spacing:1px;
+
+  margin-bottom:6px;
 }
 
 /* 運勢 */
 
-.rank{
+.fortune{
 
-  position:absolute;
-
-  left:-18px;
-  bottom:10px;
-
-  writing-mode:vertical-rl;
-  text-orientation:upright;
-
-  font-size:42px;
+  font-size:34px;
 
   color:#b91d3b;
 
   font-weight:bold;
 
-  letter-spacing:8px;
+  letter-spacing:2px;
 }
 
-/* 内容 */
+/* ラッキー行動・一言 */
 
-.text{
+.value{
 
-  position:absolute;
+  flex:1;
 
-  right:0;
-  top:0;
-
-  writing-mode:vertical-rl;
-
-  font-size:24px;
-
-  line-height:2.2;
+  font-size:16px;
 
   color:#3d2a2a;
+
+  line-height:1.8;
+
+  white-space:pre-line;
+
+  word-break:break-word;
 }
 
 /* 表紙 */
@@ -291,7 +316,7 @@ body{
     opacity 0s linear;
 }
 
-/* 半分くらいで文字消す */
+/* 90度付近で文字消す */
 
 .open .seal,
 .open .cover-text{
@@ -303,7 +328,7 @@ body{
   pointer-events:none;
 }
 
-/* 封 */
+/* 封印 */
 
 .seal{
 
@@ -318,8 +343,8 @@ body{
 
   background:
     radial-gradient(circle at top,
-      #d73c5d,
-      #a31535);
+      #4c8bf5,
+      #2459b8);
 
   color:white;
 
@@ -329,10 +354,10 @@ body{
   margin-bottom:24px;
 
   box-shadow:
-    0 12px 24px rgba(185,29,59,.4);
+    0 12px 24px rgba(36,89,184,.4);
 }
 
-/* 表文字 */
+/* 表紙文字 */
 
 .cover-text{
   text-align:center;
@@ -340,11 +365,11 @@ body{
 
 .cover-text p{
 
-  font-size:34px;
+  font-size:32px;
 
   color:#5c2c2c;
 
-  letter-spacing:5px;
+  letter-spacing:3px;
 }
 
 .cover-text span{
@@ -416,24 +441,35 @@ body{
   }
 }
 
-/* スマホ最適化 */
+/* スマホ */
 
 @media(max-width:480px){
 
   .omikuji{
-    width:240px;
-    height:340px;
+
+    width:260px;
+    height:380px;
+  }
+
+  .inside{
+
+    padding:20px;
   }
 
   .inside h1{
+
+    font-size:28px;
+  }
+
+  .fortune{
+
     font-size:30px;
   }
 
-  .rank{
-    font-size:38px;
-  }
+  .value{
 
-  .text{
-    font-size:21px;
+    font-size:15px;
+
+    line-height:1.7;
   }
 }

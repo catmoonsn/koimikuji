@@ -1,10 +1,9 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>おみくじ</title>
+  <title>青春みくじ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,26 +17,65 @@
       <!-- 中身 -->
       <div class="inside">
 
-        <h1>おみくじ</h1>
+        <h1>青春みくじ</h1>
 
         <div class="result-area">
 
-          <div id="rank" class="rank"></div>
+          <div class="section">
 
-          <div id="text" class="text"></div>
+            <div class="label">
+              運勢
+            </div>
+
+            <div id="fortune" class="fortune">
+            </div>
+
+          </div>
+
+          <div class="section">
+
+            <div class="label">
+              ラッキー行動
+            </div>
+
+            <div id="action" class="value">
+            </div>
+
+          </div>
+
+          <div class="section">
+
+            <div class="label">
+              一言
+            </div>
+
+            <div id="messageText" class="value">
+            </div>
+
+          </div>
 
         </div>
 
       </div>
 
       <!-- 表紙 -->
+
       <div class="cover">
 
-        <div class="seal">籤</div>
+        <div class="seal">
+          青
+        </div>
 
         <div class="cover-text">
-          <p>おみくじ</p>
-          <span>タップして開く</span>
+
+          <p>
+            青春みくじ
+          </p>
+
+          <span>
+            タップして開く
+          </span>
+
         </div>
 
       </div>
@@ -49,5 +87,6 @@
   <div id="message" class="message"></div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
